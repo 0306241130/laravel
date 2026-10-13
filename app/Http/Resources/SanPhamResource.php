@@ -14,7 +14,7 @@ class SanPhamResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return[
+        return [
             'ma_san_pham' => $this->id,
             'ten_san_pham' => $this->tensanpham,
             'gia' => $this->gia,

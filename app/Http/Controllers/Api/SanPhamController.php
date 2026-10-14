@@ -35,10 +35,20 @@ class SanPhamController extends Controller
             $validate = $request->validate([
                 'tensanpham' => 'required',
                 'gia' => 'required',
-                'hinhanh' => 'required',
                 'mota' => 'required',
-                'loaisanpham' => 'required'
+                'loaisanpham' => 'required',
+                'hinhanh' => 'required'
             ]);
+
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+
+                $path = $image->store('sanpham', 'public');
+
+                $validate['hinhanh'] = $path;
+            }
+
+
 
             $sanPham = SanPham::create($validate);
 
@@ -50,6 +60,7 @@ class SanPhamController extends Controller
                 201
             );
         } catch (\Exception $e) {
+            Log::error("Thêm thất bại" . $e);
             return response()->json(
                 [
                     'message' => 'thêm thất bại',

@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\api\DanhMucController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\SanPhamController;
+use App\Models\DanhMuc;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -15,3 +17,4 @@ Route::prefix("/sanpham")->controller(SanPhamController::class)->name('sanpham.'
 });
 
 Route::apiResource('sanpham', SanPhamController::class);
+Route::apiResource('danhmuc', DanhMucController::class);

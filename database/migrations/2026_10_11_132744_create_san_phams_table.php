@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('hinhanh');
             $table->string('mota');
             $table->foreignId('loaisanpham')->constrained('danh_mucs')->cascadeOnDelete();
+           
             $table->softDeletes();
             $table->timestamps();
         });

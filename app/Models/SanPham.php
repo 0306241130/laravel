@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Models\DanhMuc;
+use App\Models\BinhLuan;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class SanPham extends Model
@@ -34,5 +36,10 @@ class SanPham extends Model
     public function DanhMuc(): BelongsTo
     {
         return $this->belongsTo(DanhMuc::class, 'loaisanpham');
+    }
+
+    public function BinhLuan(): HasMany
+    {
+        return $this->hasMany(BinhLuan::class,'sanphamId');
     }
 }

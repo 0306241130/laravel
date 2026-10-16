@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\api\BinhLuanController;
 use App\Http\Controllers\api\DanhMucController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\SanPhamController;
+use App\Models\BinhLuan;
 use App\Models\DanhMuc;
 
 Route::get('/user', function (Request $request) {
@@ -18,3 +20,4 @@ Route::prefix("/sanpham")->controller(SanPhamController::class)->name('sanpham.'
 
 Route::apiResource('sanpham', SanPhamController::class);
 Route::apiResource('danhmuc', DanhMucController::class);
+Route::apiResource('binhluan', BinhLuanController::class);
